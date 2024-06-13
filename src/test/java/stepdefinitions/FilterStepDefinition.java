@@ -21,12 +21,12 @@ public class FilterStepDefinition {
 
     @Given("I am on the home page")
     public void i_am_on_the_home_page() {
-        // Use WebDriverManager to manage the ChromeDriver binary
+
         WebDriverManager.chromedriver().setup();
 
-        // Initialize the Chrome driver
+
         driver = new ChromeDriver();
-        driver.get("https://www.demoblaze.com/ "); // Replace with the actual URL
+        driver.get("https://www.demoblaze.com/ ");
     }
 
     @When("I click on a product type")

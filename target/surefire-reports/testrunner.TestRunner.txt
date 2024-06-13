@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: testrunner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 24.53 s <<< FAILURE! -- in testrunner.TestRunner
-Negative Checkout Product Functionality.Checkout product in basket -- Time elapsed: 9.873 s <<< FAILURE!
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 38.69 s <<< FAILURE! -- in testrunner.TestRunner
+Negative Checkout Product Functionality.Checkout product in basket -- Time elapsed: 9.939 s <<< FAILURE!
 java.lang.AssertionError: Could progress, should not be possible.
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.junit.Assert.assertTrue(Assert.java:42)
