@@ -4,4 +4,5 @@ stepdefinitions\SeachStepDefinition.class
 stepdefinitions\CheckoutStepDefinition.class
 stepdefinitions\NegativeCheckout.class
 stepdefinitions\AddproductStepDefinition.class
+stepdefinitions\ProductSpecStepDefinition.class
 stepdefinitions\FilterStepDefinition.class
