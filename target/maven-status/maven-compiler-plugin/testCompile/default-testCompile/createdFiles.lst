@@ -1,0 +1,5 @@
+stepdefinitions\SeachStepDefinition.class
+testrunner\TestRunner.class
+stepdefinitions\CheckoutStepDefinition.class
+stepdefinitions\AddproductStepDefinition.class
+stepdefinitions\FilterStepDefinition.class
