@@ -79,6 +79,7 @@
                             </jsonFiles>
                             <mergeFeaturesById>false</mergeFeaturesById>
                             <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
                 </executions>
