@@ -73,9 +73,12 @@
                         <configuration>
                             <projectName>Upskilling Cucumber</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
                             <jsonFiles>
-                                <param>${project.build.directory}/cucumber-reports/Cucumber.json</param>
+                                <param>**/*.json</param>
                             </jsonFiles>
+                            <mergeFeaturesById>false</mergeFeaturesById>
+                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
                         </configuration>
                     </execution>
                 </executions>
