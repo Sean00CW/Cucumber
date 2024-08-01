@@ -31,13 +31,13 @@ public class FilterStepDefinition {
 
     @When("I click on a product type")
     public void i_click_on_a_product_type() {
-        driver.findElement(By.cssSelector("a[href=\"#\"][onclick=\"byCat('notebook')\"]")).click();
+        driver.findElement(By.cssSelector(".list-group a:nth-child(3)")).click();
     }
 
     @Then("I should be redirected to that product type")
     public void i_should_be_redirected_to_that_product_type() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
-        WebElement laptopProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tbodyid > div:nth-child(2) > div > div > h4 > a")));
+        WebElement laptopProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tbodyid .card-title a[href=\"prod.html?idp_=9\"].hrefch")));
         assertTrue("Laptop products are not displayed", laptopProduct.isDisplayed());
         driver.quit();
     }
