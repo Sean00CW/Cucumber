@@ -13,6 +13,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.cucumber.java.After;
+import io.cucumber.datatable.DataTable;
+import java.util.List;
+import java.util.Map;
 
 
 import java.time.Duration;
@@ -83,41 +86,27 @@ public class NegativeCheckout {
 
     }
 
-    @And("I enter my name 1")
-    public void i_enter_my_name_1() {
-        findAndType(By.cssSelector("#name"), " ");
+    @And("I enter invalid checkout details")
+    public void i_enter_invalid_checkout_details(DataTable dataTable) {
+        List<Map<String, String>> details = dataTable.asMaps(String.class, String.class);
 
+        for (Map<String, String> detail : details) {
+            String name = detail.get("Name");
+            String country = detail.get("Country");
+            String city = detail.get("City");
+            String cardNumber = detail.get("Card Number");
+            String expiryMonth = detail.get("Expiry Month");
+            String expiryYear = detail.get("Expiry Year");
+
+            findAndType(By.cssSelector("#name"), name);
+            findAndType(By.cssSelector("#country"), country);
+            findAndType(By.cssSelector("#city"), city);
+            findAndType(By.cssSelector("#card"), cardNumber);
+            findAndType(By.cssSelector("#month"), expiryMonth);
+            findAndType(By.cssSelector("#year"), expiryYear);
+        }
     }
 
-    @And("I enter my country 1")
-    public void i_enter_my_country_1() {
-        findAndType(By.cssSelector("#country"), " ");
-
-    }
-
-    @And("I enter my city 1")
-    public void i_enter_my_city_1() {
-        findAndType(By.cssSelector("#city"), " ");
-
-    }
-
-    @And("I enter my card 1")
-    public void i_enter_my_card_1() {
-        findAndType(By.cssSelector("#card"), " ");
-
-    }
-
-    @And("I enter my month 1")
-    public void i_enter_my_month_1() {
-        findAndType(By.cssSelector("#month"), " ");
-
-    }
-
-    @And("I enter my year 1")
-    public void i_enter_my_year_1() {
-        findAndType(By.cssSelector("#year"), " ");
-
-    }
 
     @And("I click purchase 1")
     public void i_click_purchase_1() {
@@ -125,8 +114,8 @@ public class NegativeCheckout {
 
     }
 
-    @Then("Item is purchased 1")
-    public void item_is_purchased_1() {
+    @Then("Item is not purchased")
+    public void item_is_not_purchased_1() {
         boolean isElementPresent = isElementPresent(By.cssSelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button"));
         Assert.assertFalse("Could progress, should not be possible.", isElementPresent);
 

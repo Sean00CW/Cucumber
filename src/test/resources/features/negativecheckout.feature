@@ -7,11 +7,8 @@ Feature: Negative Checkout Product Functionality
     And I click add to cart 1
     And I navigate to the basket 1
     And I navigate to place order 1
-    And I enter my name 1
-    And I enter my country 1
-    And I enter my city 1
-    And I enter my card 1
-    And I enter my month 1
-    And I enter my year 1
+    And I enter invalid checkout details
+      | name | country | city | card | month | year |
+      |      |         |      |      |       |      |
     And I click purchase 1
-    Then Item is purchased 1
+    Then Item is not purchased

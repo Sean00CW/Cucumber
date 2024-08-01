@@ -45,7 +45,6 @@ public class SeachStepDefinition {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.demoblaze.com/");
 
-        // Initialize the explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

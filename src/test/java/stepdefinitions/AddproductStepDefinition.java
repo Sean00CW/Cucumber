@@ -43,13 +43,13 @@ public class AddproductStepDefinition {
     @And("I click on laptop")
     public void i_click_on_a_product() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tbodyid']/div[1]/div/div/h4/a[text()='" + "Sony vaio i5" + "']")));
-        WebElement productLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#tbodyid > div:nth-child(1) > div > div > h4 > a")));
+        WebElement productLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".card-title a[href=\"prod.html?idp_=8\"].hrefch")));
         productLink.click();
     }
 
     @And("I click add to basket")
     public void i_click_add_to_basket() {
-        WebElement addToBasketButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#tbodyid > div.row > div > a")));
+        WebElement addToBasketButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-success.btn-lg")));
         addToBasketButton.click();
     }
 
@@ -61,7 +61,7 @@ public class AddproductStepDefinition {
 
     @Then("Item is added to basket")
     public void item_is_added_to_basket() {
-        WebElement laptopProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tbodyid > tr > td:nth-child(2)")));
+        WebElement laptopProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#page-wrapper .table-responsive table tbody#tbodyid tr.success td:nth-child(2)")));
         assertTrue("Laptop not added to cart", laptopProduct.isDisplayed());
 
         if (driver != null) {

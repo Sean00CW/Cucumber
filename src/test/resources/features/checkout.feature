@@ -7,11 +7,9 @@ Feature: Checkout Product Functionality
     And I click add to cart
     And I navigate to the basket
     And I navigate to place order
-    And I enter my name
-    And I enter my country
-    And I enter my city
-    And I enter my card
-    And I enter my month
-    And I enter my year
+    And I enter the following details
+      | Name    | Country       | City        | Card Number      | Expiry Month | Expiry Year |
+      | Sean    | United Kingdom | Peterborough | 1111111111111111 | 08           | 28          |
+
     And I click purchase
     Then Item is purchased

@@ -11,6 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import io.cucumber.datatable.DataTable;
+import java.util.List;
+import java.util.Map;
 
 import java.time.Duration;
 
@@ -50,20 +53,20 @@ public class CheckoutStepDefinition {
 
     @When("I click on desired product type")
     public void i_click_on_desired_product_type() {
-        findAndClick(By.cssSelector("a[href=\"#\"][onclick=\"byCat('notebook')\"]"));
+        findAndClick(By.cssSelector(".row .col-lg-3 .list-group a.list-group-item[onclick=\"byCat('notebook')\"]"));
 
     }
 
     @And("I click on desired laptop")
     public void I_click_on_desired_laptop() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tbodyid']/div[1]/div/div/h4/a[text()='" + "Sony vaio i5" + "']")));
-        findAndClick(By.cssSelector("#tbodyid > div:nth-child(1) > div > div > h4 > a"));
+        findAndClick(By.cssSelector(".card-title a.hrefch"));
 
     }
 
     @And("I click add to cart")
     public void i_click_add_to_cart() {
-        findAndClick(By.cssSelector("#tbodyid > div.row > div > a"));
+        findAndClick(By.cssSelector("a.btn.btn-success.btn-lg"));
 
     }
 
@@ -75,49 +78,34 @@ public class CheckoutStepDefinition {
 
     @And("I navigate to place order")
     public void i_navigate_to_place_order() {
-        findAndClick(By.cssSelector("#page-wrapper > div > div.col-lg-1 > button"));
+        findAndClick(By.cssSelector(".col-lg-1 button.btn.btn-success"));
 
     }
 
-    @And("I enter my name")
-    public void i_enter_my_name() {
-        findAndType(By.cssSelector("#name"), "Sean");
+    @And("I enter the following details")
+    public void i_enter_the_following_details(DataTable dataTable) {
+        List<Map<String, String>> details = dataTable.asMaps(String.class, String.class);
 
-    }
+        for (Map<String, String> detail : details) {
+            String name = detail.get("Name");
+            String country = detail.get("Country");
+            String city = detail.get("City");
+            String cardNumber = detail.get("Card Number");
+            String expiryMonth = detail.get("Expiry Month");
+            String expiryYear = detail.get("Expiry Year");
 
-    @And("I enter my country")
-    public void i_enter_my_country() {
-        findAndType(By.cssSelector("#country"), "United Kingdom");
-
-    }
-
-    @And("I enter my city")
-    public void i_enter_my_city() {
-        findAndType(By.cssSelector("#city"), "Peterborough");
-
-    }
-
-    @And("I enter my card")
-    public void i_enter_my_card() {
-        findAndType(By.cssSelector("#card"), "1111111111111111");
-
-    }
-
-    @And("I enter my month")
-    public void i_enter_my_month() {
-        findAndType(By.cssSelector("#month"), "08");
-
-    }
-
-    @And("I enter my year")
-    public void i_enter_my_year() {
-        findAndType(By.cssSelector("#year"), "28");
-
+            findAndType(By.cssSelector("#name"), name);
+            findAndType(By.cssSelector("#country"), country);
+            findAndType(By.cssSelector("#city"), city);
+            findAndType(By.cssSelector("#card"), cardNumber);
+            findAndType(By.cssSelector("#month"), expiryMonth);
+            findAndType(By.cssSelector("#year"), expiryYear);
+        }
     }
 
     @And("I click purchase")
     public void i_click_purchase() {
-        findAndClick(By.cssSelector("#orderModal > div > div > div.modal-footer > button.btn.btn-primary"));
+        findAndClick(By.cssSelector("#orderModal .modal-footer .btn.btn-primary"));
 
     }
 
