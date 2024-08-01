@@ -64,13 +64,13 @@ public class NegativeCheckout {
     @And("I click on desired laptop 1")
     public void I_click_on_desired_laptop() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tbodyid']/div[1]/div/div/h4/a[text()='" + "Sony vaio i5" + "']")));
-        findAndClick(By.cssSelector("#tbodyid > div:nth-child(1) > div > div > h4 > a"));
+        findAndClick(By.cssSelector("#tbodyid .card-title"));
 
     }
 
     @And("I click add to cart 1")
     public void i_click_add_to_cart() {
-        findAndClick(By.cssSelector("#tbodyid > div.row > div > a"));
+        findAndClick(By.cssSelector(".row .col-md-7 .row a[href=\"#\"].btn"));
 
     }
 
@@ -82,7 +82,7 @@ public class NegativeCheckout {
 
     @And("I navigate to place order 1")
     public void i_navigate_to_place_order_1() {
-        findAndClick(By.cssSelector("#page-wrapper > div > div.col-lg-1 > button"));
+        findAndClick(By.cssSelector("#page-wrapper .col-lg-1 .btn"));
 
     }
 
@@ -110,13 +110,13 @@ public class NegativeCheckout {
 
     @And("I click purchase 1")
     public void i_click_purchase_1() {
-        findAndClick(By.cssSelector("#orderModal > div > div > div.modal-footer > button.btn.btn-primary"));
+        findAndClick(By.cssSelector("#orderModal .modal-content .modal-footer button:nth-child(2)"));
 
     }
 
     @Then("Item is not purchased")
     public void item_is_not_purchased_1() {
-        boolean isElementPresent = isElementPresent(By.cssSelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button"));
+        boolean isElementPresent = isElementPresent(By.cssSelector(".sa-button-container .confirm"));
         Assert.assertFalse("Could progress, should not be possible.", isElementPresent);
 
     }

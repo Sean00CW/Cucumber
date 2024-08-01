@@ -36,7 +36,7 @@ public class FilterStepDefinition {
 
     @Then("I should be redirected to that product type")
     public void i_should_be_redirected_to_that_product_type() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement laptopProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#tbodyid .card-title a[href=\"prod.html?idp_=9\"].hrefch")));
         assertTrue("Laptop products are not displayed", laptopProduct.isDisplayed());
         driver.quit();
